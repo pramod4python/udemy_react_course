@@ -8,29 +8,37 @@ const app = {
 const onFormSubmit = (e) => {
     e.preventDefault();
     const option = e.target.elements.option.value;
-    if(option){
+    if (option) {
         app.options.push(option);
-        e.target.elements.option.value='';
+        e.target.elements.option.value = '';
         render();
     }
 };
 const appRoot = document.getElementById('app');
 const removeAll = () => {
-app.options=[];
-render();
+    app.options = [];
+    render();
 };
-const render = ()=>{
+const onMakeDecision = () =>{
+    const randonNum = Math.floor(Math.random() * app.options.length);
+    const option = app.options[randonNum];
+    alert(option);
+};
+const render = () => {
     const template = (
         <div>
             <h1>{app.title}</h1>
             {app.subTitle && <p>{app.subTitle}</p>}
             <p>{(app.options && app.options.length > 0) ? 'Here are your options:' : 'No Options'}</p>
-            <p>{app.options.length}</p>
+            <button disabled={app.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
+            <button onClick={removeAll}>Remove All</button>
             <ol>
-                <li>{app.options[0]}</li>
-                <li>{app.options[1]}</li>
+            {
+                app.options.map((option) =>{
+                    return <li key={option}>{option}</li>
+                })
+            }    
             </ol>
-            <button onClick={removeAll}>Remove all</button>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"></input>
                 <button>Add Options</button>
