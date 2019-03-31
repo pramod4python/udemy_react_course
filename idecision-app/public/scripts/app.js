@@ -41,11 +41,11 @@ var template = React.createElement(
     )
 );
 
-// const user = {
-//     name:'Pramod',
-//     age:34,
-//     location:'New York'
-// };
+var user = {
+    name: 'Pramod',
+    age: 34,
+    location: 'New York'
+};
 function getLocation(location) {
     if (location) {
         return React.createElement(

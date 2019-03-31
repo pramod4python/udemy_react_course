@@ -17,11 +17,11 @@ const template = (
     </div>
 );
 
-// const user = {
-//     name:'Pramod',
-//     age:34,
-//     location:'New York'
-// };
+const user = {
+    name:'Pramod',
+    age:34,
+    location:'New York'
+};
 function getLocation(location){
     if(location){
         return <p>Location : {location}</p>
